@@ -36,7 +36,7 @@ pipeline{
             steps{
                 sh '''
                     echo 'Build Docker Image'
-                    docker build -t "${IMAGE_NAME}" .
+                    docker build -t "${IMAGE_NAME}"/gitops_argocd_project .
                     '''
             }
 
