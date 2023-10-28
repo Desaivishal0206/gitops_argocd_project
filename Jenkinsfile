@@ -26,9 +26,12 @@ pipeline{
 
             steps{
                 script{
-                    withCredentials([gitUsernamePassword(credentialsId: 'github', gitToolName: 'Default')]) {
+                    // withCredentials([gitUsernamePassword(credentialsId: 'github', gitToolName: 'Default')]) {
 
-                    }
+                    // }
+                    git  credentialsId: 'github',
+                    url: 'https://github.com/Desaivishal0206/gitops_argocd_project.git',
+                    branch: 'main'
                 }
             }
         }
@@ -41,16 +44,16 @@ pipeline{
 
         }
 
-        // stage('Push Docker Image'){
-        //     steps{
-        //         script{
-        //             docker.withRegister('',REGISTRY_CREDS){
-        //                 docker_image.push("$BUILD_NUMBER")
-        //                 docker_image.push("latest")
-        //             }
-        //         }
-        //     }
-        // }
+        stage('Push Docker Image'){
+            steps{
+                script{
+                    docker.withRegistry('',REGISTRY_CREDS){
+                        docker_image.push("$BUILD_NUMBER")
+                        docker_image.push("latest")
+                    }
+                }
+            }
+        }
     }
 }
 
