@@ -6,7 +6,7 @@ pipeline{
         DOCKERHUB_USERNAME ="desaivishal0206"
         APP_NAME="gitops-argo-app"
         IMAGE_TAG ="${BUILD_NUMBER}"
-        IMAGE_NAME ="${DOCKERHUB_USERNAME}" + "/" 
+        IMAGE_NAME ="${DOCKERHUB_USERNAME}" 
         // IMAGE_NAME ="${DOCKERHUB_USERNAME}" + "/" + "${APP_NAME}"
         REGISTRY_CREDS = 'dockerhub'
     }
