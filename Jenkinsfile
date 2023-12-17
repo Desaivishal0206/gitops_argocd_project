@@ -64,6 +64,14 @@ pipeline{
             }
         }
 
+        stage('trigger config change pipeline'){
+            steps{
+                script{
+                    sh"curl -v-k --user vishal:11a51d5e3fa57dd24ab6a7f2a1a77f3c4d -X POST -H 'cache-control:no-cache'-H'content-type: application/x-www-form-urlencoded'--data 'IMAGE_TAG=${IMAGE_TAG}''http://http://3.109.121.88:8080/job/gitops-agrocd_CD/buildWithParameter?token=gitops-config'"
+                }
+            }
+        }
+
         
     }
 }
